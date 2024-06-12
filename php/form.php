@@ -1,48 +1,19 @@
 <?php
-$pescabile = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "*",
-    "#",
-    "+",
-    "-",
-    "/",
-    "|",
-    "(",
-    ")",
-    "[",
-    "]",
-];
+$pescabile = "12345678910abcdefghijABCDEFGHIJ*#+-/|()[].";
 $pass = '';
 // $input = $_GET["input"];
+
+function generator($arg, $arg1) {
+    if (isset($_POST['SubmitButton'])) { //check if form was submitted
+        $input = $_POST['input']; //get input text
+        for ($i = 0; $i < $input; $i++) {
+            // array_push($pass, "X");
+            $random = rand(0, 30);
+            $arg = $arg . $arg1[$random];
+        }
+        echo "<h1>" . $arg . "</h1>";
+    }
+}
 
 ?>
 
@@ -58,21 +29,21 @@ $pass = '';
 
 <body>
     <div class="myCont">
-        <form action="form.php" method="get">
+        <form action="form.php" method="post">
             <input type="number" value="number" name="input">
             <button type="submit" name="SubmitButton">invia</button>
         </form>
         <?php
-        if (isset($_GET['SubmitButton'])) { //check if form was submitted
-            $input = $_GET['input']; //get input text
-            $message = "Success! You entered: " . $input;
-            for ($i = 0; $i < $input; $i++) {
-                // array_push($pass, "X");
-                $random = rand(0, 29);
-                $pass = $pass . $pescabile[$random];
-            }
-            echo "<h1>" . $pass . "</h1>";
-        }
+        // if (isset($_POST['SubmitButton'])) { //check if form was submitted
+        //     $input = $_POST['input']; //get input text
+        //     $message = "Success! You entered: " . $input;
+        //     for ($i = 0; $i < $input; $i++) {
+        //         // array_push($pass, "X");
+        //         $random = rand(0, 30);
+        //         $pass = $pass . $pescabile[$random];
+        //     }
+        // }
+        echo generator($pass, $pescabile);
         ?>
     </div>
 </body>
