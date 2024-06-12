@@ -1,8 +1,40 @@
 <?php
-$numbers = "x";
+$pescabile = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+];
 $pass = '';
 $input = $_GET["input"];
-
+$min = 0;
+$max = 10;
 
 ?>
 
@@ -20,7 +52,8 @@ $input = $_GET["input"];
     <?php
     for ($i = 0; $i < $input; $i++) {
         // array_push($pass, "X");
-        $pass = $pass . $numbers;
+        $random = rand(0, 29);
+        $pass = $pass . $pescabile[$random];
     }
     echo "<h1>" . $pass . "</h1>";
     ?>
